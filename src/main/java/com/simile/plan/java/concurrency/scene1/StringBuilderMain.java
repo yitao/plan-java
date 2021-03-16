@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * StringBuilder是非线程安全的
+ * 在此用例中，会发现第二行输出0-9的字符串中，可能出现丢失某些数字
  * created by yitao on 2020/05/12
  */
 public class StringBuilderMain {
@@ -29,6 +31,11 @@ public class StringBuilderMain {
 
         System.out.println(buffer.toString());
         System.out.println(builder.toString());
+        /*
+        某次输出：
+        0123456789
+        012345689
+         */
     }
 
     static class T1 extends Thread{

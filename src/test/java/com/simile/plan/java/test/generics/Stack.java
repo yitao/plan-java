@@ -7,17 +7,6 @@ package com.simile.plan.java.test.generics;
  */
 public class Stack {
 
-    private String[] strs;
-
-    public String pop(){
-
-        return "";
-    }
-
-    public boolean push(String params){
-
-        return true;
-    }
-
 
 }
+

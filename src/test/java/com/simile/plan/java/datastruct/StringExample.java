@@ -19,4 +19,23 @@ public class StringExample {
 		System.out.println(String.format("a=%s,b=%s", a, b));
 		System.out.println(String.format("c=%s,d=%s", c, d));
 	}
+
+	@Test
+	public void testReplace(){
+		String a = "{{{sss}}}}}";
+		System.out.println(a.replace("}}","} }"));
+		System.out.println(a.replaceAll("}}","} }"));
+		System.out.println(a.replaceAll("\\}\\}","} }"));
+		System.out.println(a.replaceAll("}}","} } "));
+	}
+
+    @Test
+    public void name() {
+//	    String table = "xx.xx";
+	    String table = "xx444.222";
+        if (table.contains(".")) {
+            table = table.substring(table.lastIndexOf(".") + 1);
+        }
+        System.out.println(table);
+    }
 }

@@ -23,44 +23,74 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
+import org.junit.Test;
+
 /**
  * @Author yitao
  * @Created 2021/08/27
  */
 public class CollectionExample {
 
-	private Collection collection;
+	 Collection collection;
 
-	private List list;
-	private ArrayList arrayList;
-	private LinkedList linkedList;
+	 List list;
+	 ArrayList arrayList;
+	 LinkedList linkedList;
 
-	private Vector vector;
+	 Vector vector;
 
-	private Set set;
-	private HashSet hashSet;
-	private LinkedHashSet linkedHashSet;
-	private TreeSet treeSet;
+	 Set set;
+	 HashSet hashSet;
+	 LinkedHashSet linkedHashSet;
+	 TreeSet treeSet;
+
+	 Queue queue;
+	 Deque deque;
+
+	 ArrayDeque arrayDeque;
+
+	 PriorityQueue priorityQueue;
+
+	 BlockingQueue blockingQueue;
+	 ArrayBlockingQueue arrayBlockingQueue;
+	 LinkedBlockingQueue linkedBlockingQueue;
+	 PriorityBlockingQueue priorityBlockingQueue;
+
+	 ConcurrentLinkedQueue concurrentLinkedQueue;
+	 ConcurrentLinkedDeque concurrentLinkedDeque;
+
+	 SynchronousQueue synchronousQueue;
+	 LinkedBlockingDeque linkedBlockingDeque;
+
+	 ConcurrentSkipListSet concurrentSkipListSet;
+
+	 @Test
+	 public void testArrayDeque(){
+		 ArrayDeque arrayDeque = new ArrayDeque();
+		 arrayDeque.addFirst("1");
+		 arrayDeque.addFirst("2");
+		 System.out.println(arrayDeque);
+		 arrayDeque.addLast("3");
+		 arrayDeque.addLast("4");
+		 System.out.println(arrayDeque);
+		 arrayDeque.add("5");
+		 System.out.println(arrayDeque);
+		 System.out.println(arrayDeque.element());
+		 System.out.println(arrayDeque.getFirst());
+		 System.out.println(arrayDeque.getLast());
+		 System.out.println(arrayDeque.poll());
+		 System.out.println(arrayDeque);
+		 System.out.println(arrayDeque.pollFirst());
+		 System.out.println(arrayDeque);
+		 System.out.println(arrayDeque.pollLast());
+		 System.out.println(arrayDeque);
+		 System.out.println(arrayDeque.pop());
+		 System.out.println(arrayDeque);
+		 arrayDeque.push("6");
+		 System.out.println(arrayDeque);
+	 }
 
 
-	private Queue queue;
-	private Deque deque;
-
-	private ArrayDeque arrayDeque;
-	private PriorityQueue priorityQueue;
-
-	private BlockingQueue blockingQueue;
-	private ArrayBlockingQueue arrayBlockingQueue;
-	private LinkedBlockingQueue linkedBlockingQueue;
-	private PriorityBlockingQueue priorityBlockingQueue;
-
-	private ConcurrentLinkedQueue concurrentLinkedQueue;
-	private ConcurrentLinkedDeque concurrentLinkedDeque;
-
-	private SynchronousQueue synchronousQueue;
-	private LinkedBlockingDeque linkedBlockingDeque;
-
-	private ConcurrentSkipListSet concurrentSkipListSet;
 
 
 }

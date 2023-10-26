@@ -1,6 +1,6 @@
 package com.simile.plan.java.concurrency.scene1;
 
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -10,54 +10,55 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class BlockingQueueExample {
 
     public static void main(String[] args) {
-//        Queue<String> queue = new ArrayBlockingQueue<>(100);
-        Queue<String> queue = new LinkedBlockingQueue<>();
+//        BlockingQueue<String> queue = new ArrayBlockingQueue<>(100);
+        BlockingQueue<String> queue = new LinkedBlockingQueue<>();
 
         new PollThread(queue).start();
-        for (int i = 0; i < 100; i++) {
+
+        for (int i = 0; i < 10; i++) {
             new WriteThread(queue).start();
         }
-
     }
 
+    /**
+     * 模拟发送线程
+     */
     static class WriteThread extends Thread {
-        Queue<String> queue;
+        BlockingQueue<String> queue;
 
-        public WriteThread(Queue<String> queue) {
+        public WriteThread(BlockingQueue<String> queue) {
             this.queue = queue;
         }
 
         @Override
         public void run() {
-            String val = Thread.currentThread().getName() + ":" + System.currentTimeMillis();
+            System.out.println("发送：" + Thread.currentThread().getName());
+            this.queue.offer(Thread.currentThread().getName());
+        }
+    }
+
+    /**
+     * 模拟消费线程
+     */
+    static class PollThread extends Thread {
+        BlockingQueue<String> queue;
+
+        public PollThread(BlockingQueue<String> queue) {
+            this.queue = queue;
+        }
+
+        @Override
+        public void run() {
             try {
-                //关键代码，避免竞争线程执行的太快
-                Thread.sleep(1);
+                String s = null;
+                while ((s = this.queue.take()) != null) {
+                    System.out.println("接收到：" + s);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.queue.offer(val);
         }
     }
 
-    static class PollThread extends Thread {
-        Queue<String> queue;
-
-        public PollThread(Queue<String> queue) {
-            this.queue = queue;
-        }
-
-        @Override
-        public void run() {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                    System.out.println(Thread.currentThread().getName() + ":" + this.queue.size());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
 
 }

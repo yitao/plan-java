@@ -7,8 +7,21 @@ import org.junit.Test;
  * @Created 2021/09/06
  */
 public class StringExample {
+    protected static final String WITH_AND_OR_DELIMITER = "((?<= and )|(?<= or ))";
 
-	@Test
+    @Test
+    public void rep() {
+        String expr = "CURRENT.work_float<13.23 or CURRENT.work_float>=21.45";
+//        String expr = "CURRENT.work_float>=21.45";
+        String[] exprArray = expr.split(WITH_AND_OR_DELIMITER);
+        for (String s : exprArray) {
+            System.out.println("----");
+            System.out.println(s);
+        }
+
+    }
+
+    @Test
 	public void valueOfCase() {
 		String a = String.valueOf("张三");
 		String b = String.valueOf("张三");

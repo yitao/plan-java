@@ -1,4 +1,4 @@
-package com.simile.plan.java.common;
+package com.simile.plan.java.datastruct.string;
 
 /**
  * @author yitao

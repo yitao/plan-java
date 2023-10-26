@@ -14,7 +14,7 @@ public class CyclicBarrierExample {
 
 
     public static void main(String[] args) {
-        //倒计时锁
+        //栅栏
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
 
         new ThreadB(cyclicBarrier).start();
@@ -42,8 +42,8 @@ public class CyclicBarrierExample {
             for (int i = 0; i < 13; i++) {
                 try {
                     cyclicBarrier.await();
-                    System.out.println(Thread.currentThread().getName() + ":ThreadA正在处理:" + i);
-                    Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName() + ":ThreadA正在处理:A" + i);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {
@@ -64,9 +64,11 @@ public class CyclicBarrierExample {
         public void run() {
             System.out.println("进入ThreadB");
             try {
-                cyclicBarrier.await();
-                System.out.println(Thread.currentThread().getName() + ":ThreadB正在处理");
-                Thread.sleep(1000);
+                for (int i = 0; i < 13; i++) {
+                    cyclicBarrier.await();
+                    System.out.println(Thread.currentThread().getName() + ":ThreadB正在处理:B" + i);
+                    Thread.sleep(100);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (BrokenBarrierException e) {

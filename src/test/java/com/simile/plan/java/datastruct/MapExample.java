@@ -19,4 +19,18 @@ public class MapExample {
 	private Hashtable hashtable;
 
 	private ConcurrentHashMap concurrentHashMap;
+
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        map.put("A", "A");
+        map.put("B", "B");
+        map.put("C", "C");
+        String[] ss = {"A","B","C"};
+        for (String s : ss) {
+            if(map.containsKey(s)){
+                map.remove(s);
+            }
+        }
+        System.out.println(map.size());
+    }
 }

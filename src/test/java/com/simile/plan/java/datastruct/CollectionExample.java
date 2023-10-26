@@ -2,6 +2,7 @@ package com.simile.plan.java.datastruct;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.HashSet;
@@ -22,7 +23,9 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
+import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -31,66 +34,89 @@ import org.junit.Test;
  */
 public class CollectionExample {
 
-	 Collection collection;
+    Collection collection;
 
-	 List list;
-	 ArrayList arrayList;
-	 LinkedList linkedList;
+    List list;
+    ArrayList arrayList;
+    LinkedList linkedList;
 
-	 Vector vector;
+    Vector vector;
 
-	 Set set;
-	 HashSet hashSet;
-	 LinkedHashSet linkedHashSet;
-	 TreeSet treeSet;
+    Set set;
+    HashSet hashSet;
+    LinkedHashSet linkedHashSet;
+    TreeSet treeSet;
 
-	 Queue queue;
-	 Deque deque;
+    Queue queue;
+    Deque deque;
 
-	 ArrayDeque arrayDeque;
+    ArrayDeque arrayDeque;
 
-	 PriorityQueue priorityQueue;
+    PriorityQueue priorityQueue;
 
-	 BlockingQueue blockingQueue;
-	 ArrayBlockingQueue arrayBlockingQueue;
-	 LinkedBlockingQueue linkedBlockingQueue;
-	 PriorityBlockingQueue priorityBlockingQueue;
+    BlockingQueue blockingQueue;
+    ArrayBlockingQueue arrayBlockingQueue;
+    LinkedBlockingQueue linkedBlockingQueue;
+    PriorityBlockingQueue priorityBlockingQueue;
 
-	 ConcurrentLinkedQueue concurrentLinkedQueue;
-	 ConcurrentLinkedDeque concurrentLinkedDeque;
+    ConcurrentLinkedQueue concurrentLinkedQueue;
+    ConcurrentLinkedDeque concurrentLinkedDeque;
 
-	 SynchronousQueue synchronousQueue;
-	 LinkedBlockingDeque linkedBlockingDeque;
+    SynchronousQueue synchronousQueue;
+    LinkedBlockingDeque linkedBlockingDeque;
 
-	 ConcurrentSkipListSet concurrentSkipListSet;
+    ConcurrentSkipListSet concurrentSkipListSet;
 
-	 @Test
-	 public void testArrayDeque(){
-		 ArrayDeque arrayDeque = new ArrayDeque();
-		 arrayDeque.addFirst("1");
-		 arrayDeque.addFirst("2");
-		 System.out.println(arrayDeque);
-		 arrayDeque.addLast("3");
-		 arrayDeque.addLast("4");
-		 System.out.println(arrayDeque);
-		 arrayDeque.add("5");
-		 System.out.println(arrayDeque);
-		 System.out.println(arrayDeque.element());
-		 System.out.println(arrayDeque.getFirst());
-		 System.out.println(arrayDeque.getLast());
-		 System.out.println(arrayDeque.poll());
-		 System.out.println(arrayDeque);
-		 System.out.println(arrayDeque.pollFirst());
-		 System.out.println(arrayDeque);
-		 System.out.println(arrayDeque.pollLast());
-		 System.out.println(arrayDeque);
-		 System.out.println(arrayDeque.pop());
-		 System.out.println(arrayDeque);
-		 arrayDeque.push("6");
-		 System.out.println(arrayDeque);
-	 }
-
-
+    @Test
+    public void testArrayDeque() {
+        ArrayDeque arrayDeque = new ArrayDeque();
+        arrayDeque.addFirst("1");
+        arrayDeque.addFirst("2");
+        System.out.println(arrayDeque);
+        arrayDeque.addLast("3");
+        arrayDeque.addLast("4");
+        System.out.println(arrayDeque);
+        arrayDeque.add("5");
+        System.out.println(arrayDeque);
+        System.out.println(arrayDeque.element());
+        System.out.println(arrayDeque.getFirst());
+        System.out.println(arrayDeque.getLast());
+        System.out.println(arrayDeque.poll());
+        System.out.println(arrayDeque);
+        System.out.println(arrayDeque.pollFirst());
+        System.out.println(arrayDeque);
+        System.out.println(arrayDeque.pollLast());
+        System.out.println(arrayDeque);
+        System.out.println(arrayDeque.pop());
+        System.out.println(arrayDeque);
+        arrayDeque.push("6");
+        System.out.println(arrayDeque);
+    }
 
 
+    @Test
+    public void name() {
+        List<Object> strs = Arrays.asList("A", "B", "C");
+        List<Object> ints = Arrays.asList(1, 2, 3);
+        System.out.println(StringUtils.join(strs.stream().map(o -> {
+            if (o == null) {
+                return null;
+            }
+            if (o instanceof String) {
+                return "'" + o + "'";
+            }
+            return o.toString();
+        }).collect(Collectors.toList()), ","));
+        System.out.println(StringUtils.join(ints.stream().map(o -> {
+            if (o == null) {
+                return null;
+            }
+            if (o instanceof String) {
+                return "'" + o + "'";
+            }
+            return o.toString();
+        }).collect(Collectors.toList()), ","));
+//        System.out.println(String.join(",", strs));
+//        System.out.println(String.join(",", ints.stream().map(i -> i.toString()).collect(Collectors.toList())));
+    }
 }

@@ -12,9 +12,9 @@ import org.apache.commons.lang3.time.DateUtils;
 public class DateFormatExample {
 
     public static void main(String[] args) throws ParseException {
-//        Date d = DateUtils.parseDate("2022-01-01T11:11:11.111+08", "yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        Date d = DateUtils.parseDate("2022-01-01T11:11:11.111+08", "yyyy-MM-dd'T'HH:mm:ss.SSSX");
 //        System.out.println(Long.valueOf("2019-08-15 16:00:00 UTC"));
-        Date d = DateUtils.parseDate("2019-08-15 16:00:00 UTC", "yyyy-MM-dd HH:mm:ss Z");
+//        Date d = DateUtils.parseDate("2019-08-15 16:00:00 UTC", "yyyy-MM-dd HH:mm:ss Z");
         System.out.println(d);
 
 //      Date d = new Date();
